@@ -2,38 +2,44 @@ package com.joshofreeness.ordertracking.persistence;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.hibernate.SessionFactory;
+
 import com.joshofreeness.ordertracking.domain.Customer;
+import com.joshofreeness.ordertracking.domain.Product;
 
 public class CustomerDaoImpl implements CustomerDao{
+	
+	private final Logger log = Logger.getLogger(CustomerDaoImpl.class);
+	private SessionFactory sessionFactory;
 
-	@Override
+	
 	public List<Customer> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer as c").list();
+		return result;
 	}
 
-	@Override
 	public void delete(Customer customer) {
-		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().delete(customer);
+		log.info("Customer deleted with Name: " + customer.getFirstName()+ " "+ customer.getLastName());
 		
 	}
 
-	@Override
 	public List<Customer> findAllWithDetail() {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO: Edit the query so that it joins tables with orders
+		List<Customer> result = sessionFactory.getCurrentSession().getNamedQuery("from Customer as c").list();
+		return result;
 	}
 
-	@Override
 	public Customer findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Customer result = (Customer) sessionFactory.getCurrentSession().getNamedQuery("from Customer as c where c.id = :id").setParameter("id", id);
+		return result;
 	}
 
-	@Override
 	public Customer save(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		sessionFactory.getCurrentSession().saveOrUpdate(customer);
+		log.info("Customer saved with name: " + customer.getFirstName()+ " "+ customer.getLastName());
+		return customer;
 	}
 
 }
