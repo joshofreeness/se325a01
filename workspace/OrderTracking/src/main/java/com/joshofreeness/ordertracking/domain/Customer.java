@@ -2,6 +2,8 @@ package com.joshofreeness.ordertracking.domain;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +14,9 @@ import org.apache.log4j.Logger;
 
 @Entity
 @Table(name = "CUSTOMER")
-public class Customer {
+public class Customer implements Serializable{
 
+	private static final long serialVersionUID = 7722022490094349455L;
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -27,6 +30,12 @@ public class Customer {
 	public Customer(){
 		log = Logger.getLogger(Product.class);
 		log.info("New Customer Created");
+	}
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "ID")
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Column(name = "FIRSTNAME")
@@ -84,12 +93,6 @@ public class Customer {
 		return id;
 	}
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "ID")
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getLastName() {
 		return lastName;
