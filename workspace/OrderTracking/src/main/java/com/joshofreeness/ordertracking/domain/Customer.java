@@ -31,9 +31,16 @@ public class Customer implements Serializable{
 		log = Logger.getLogger(Product.class);
 		log.info("New Customer Created");
 	}
+	
+	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID")
+	public int getId() {
+		return id;
+	}
+
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -87,10 +94,6 @@ public class Customer implements Serializable{
 
 	public void setCredit(double credit) {
 		this.credit = credit;
-	}
-
-	public int getId() {
-		return id;
 	}
 
 

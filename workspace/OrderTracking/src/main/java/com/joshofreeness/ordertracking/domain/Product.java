@@ -43,13 +43,14 @@ public class Product implements Serializable{
 		name = input_name;
 	}
 
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "ID")
 	public Long getId() {
 		return id;
 	}
 	
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "ID")
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
