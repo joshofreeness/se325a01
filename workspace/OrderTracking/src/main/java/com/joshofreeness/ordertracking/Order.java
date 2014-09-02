@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 
 public class Order {
 	
+	
 	private Customer fCustomer;
 	private Product fProduct;
 	final Logger log;
