@@ -2,20 +2,12 @@ package com.joshofreeness.ordertracking;
 
 public class Order {
 	
-	private float fCost;
-	private String fName;
+	private Customer fCustomer;
+	private Product fProduct;
 	
-	public Order(String name, float cost){
-		fCost = cost;
-		fName = name;
-	}
-	
-	public float getCost() {
-		return fCost;
-	}
-
-	public String getName() {
-		return fName;
+	public Order(Customer customer, Product product){
+		fCustomer = customer;
+		fProduct = product;
 	}
 
 }
