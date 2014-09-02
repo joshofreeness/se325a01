@@ -20,19 +20,25 @@ public class Product implements Serializable{
 	
 	private static final long serialVersionUID = -6153234844024969938L;
 	private Long id;
-	private float fCost;
+	private float cost;
 	private String name;
 	private final Logger log = Logger.getLogger(Product.class);
 	
+	public Product(){}
+	
 	public Product(String input_name, float cost){
-		fCost = cost;
+		this.cost = cost;
 		name = input_name;
 		log.info("New Product Created");
 	}
 	
 	@Column(name = "COST")
 	public float getCost() {
-		return fCost;
+		return cost;
+	}
+	
+	public void setCost(float cost){
+		this.cost = cost;
 	}
 	
 	@Column(name = "NAME")

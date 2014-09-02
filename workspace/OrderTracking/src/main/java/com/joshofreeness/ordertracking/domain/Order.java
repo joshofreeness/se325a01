@@ -21,10 +21,11 @@ public class Order implements Serializable{
 	private Long id;
 	private Customer customer;
 	private Product product;
-	final Logger log;
+	final Logger log = Logger.getLogger(Product.class);
+	
+	public Order(){}
 	
 	public Order(Customer customer, Product product){
-		log = Logger.getLogger(Product.class);
 		this.setCustomer(customer);
 		this.setProduct(product);
 		log.info("New Order Created");

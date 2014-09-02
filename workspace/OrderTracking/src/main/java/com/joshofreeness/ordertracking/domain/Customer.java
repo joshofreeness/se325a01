@@ -25,12 +25,9 @@ public class Customer implements Serializable{
 	private String email;
 	private String specialInstructions;
 	private double credit;
-	private final Logger log;
+	private final Logger log = Logger.getLogger(Product.class);
 	
-	public Customer(){
-		log = Logger.getLogger(Product.class);
-		log.info("New Customer Created");
-	}
+	public Customer(){}
 	
 	
 	@Id
@@ -96,7 +93,7 @@ public class Customer implements Serializable{
 		this.credit = credit;
 	}
 
-
+	@Column(name="LASTNAME")
 	public String getLastName() {
 		return lastName;
 	}

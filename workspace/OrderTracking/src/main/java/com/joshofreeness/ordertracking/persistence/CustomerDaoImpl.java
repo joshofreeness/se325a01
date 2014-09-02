@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.joshofreeness.ordertracking.domain.Customer;
 import com.joshofreeness.ordertracking.domain.Product;
 
+@Repository("customerDao")
+@Transactional
 public class CustomerDaoImpl implements CustomerDao{
 	
 	private final Logger log = Logger.getLogger(CustomerDaoImpl.class);
