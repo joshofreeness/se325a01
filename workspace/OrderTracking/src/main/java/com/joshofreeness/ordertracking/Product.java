@@ -17,8 +17,9 @@ import org.apache.log4j.Logger;
 public class Product implements Serializable{
 
 	
-	private static final long serialVersionUID = 1L;
-	private int id;
+	
+	private static final long serialVersionUID = -6153234844024969938L;
+	private Long id;
 	private float fCost;
 	private String name;
 	private final Logger log = Logger.getLogger(Product.class);
@@ -42,14 +43,14 @@ public class Product implements Serializable{
 		name = input_name;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID")
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 }
