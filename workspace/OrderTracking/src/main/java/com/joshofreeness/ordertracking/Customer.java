@@ -1,7 +1,17 @@
 package com.joshofreeness.ordertracking;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.apache.log4j.Logger;
 
+@Entity
+@Table(name = "CUSTOMER")
 public class Customer {
 
 	private int id;
@@ -18,6 +28,7 @@ public class Customer {
 		log.info("New Customer Created");
 	}
 
+	@Column(name = "FIRSTNAME")
 	public String getFirstName() {
 		return firstName;
 	}
@@ -25,7 +36,8 @@ public class Customer {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	
+	@Column(name="ADDRESS")
 	public String getAddress() {
 		return address;
 	}
@@ -33,7 +45,7 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
+	@Column(name = "MOBPHONE")
 	public int getMobPhone() {
 		return mobPhone;
 	}
@@ -41,7 +53,7 @@ public class Customer {
 	public void setMobPhone(int mobPhone) {
 		this.mobPhone = mobPhone;
 	}
-
+	@Column(name = "EMAIL")
 	public String getEmail() {
 		return email;
 	}
@@ -49,7 +61,7 @@ public class Customer {
 	public void setEmail(String eMail) {
 		this.email = eMail;
 	}
-
+	@Column(name = "SPECIALINSTRUCTIONS")
 	public String getSpecialInstructions() {
 		return specialInstructions;
 	}
@@ -58,6 +70,7 @@ public class Customer {
 		this.specialInstructions = specialInstructions;
 	}
 
+	@Column(name="CREDIT")
 	public double getCredit() {
 		return credit;
 	}
@@ -70,6 +83,9 @@ public class Customer {
 		return id;
 	}
 
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "ID")
 	public void setId(int id) {
 		this.id = id;
 	}
