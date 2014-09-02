@@ -1,4 +1,4 @@
-package com.joshofreeness.ordertracking;
+package com.joshofreeness.ordertracking.domain;
 
 import static javax.persistence.GenerationType.IDENTITY;
 

@@ -1,4 +1,4 @@
-package com.joshofreeness.ordertracking;
+package com.joshofreeness.ordertracking.domain;
 
 public class Testing {
 
