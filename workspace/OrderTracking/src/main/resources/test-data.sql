@@ -1,0 +1,3 @@
+insert into customer (firstname, address, mobphone, email, specialinstructions, credit) values ('Bruce', 'PLACE', 02102539198, 'Place234@thing', 'Go here', 5);
+insert into customer (firstname, address, mobphone, email, specialinstructions, credit) values ('Blare', 'PLACE', 0215539198, 'Place56@thing', 'Go here', 5);
+insert into customer (firstname, address, mobphone, email, specialinstructions, credit) values ('Simon', 'PLACE', 0210253788, 'Plac3e@thing', 'Go here', 7);

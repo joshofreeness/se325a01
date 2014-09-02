@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.apache.log4j.Logger;
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ORDER_TABLE")
 public class Order implements Serializable{
 	
 	

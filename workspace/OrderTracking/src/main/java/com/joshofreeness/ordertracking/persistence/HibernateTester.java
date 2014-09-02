@@ -1,17 +1,12 @@
 package com.joshofreeness.ordertracking.persistence;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.joshofreeness.ordertracking.persistence.CustomerDao;
-import com.joshofreeness.ordertracking.persistence.OrderDao;
-import com.joshofreeness.ordertracking.persistence.ProductDao;
 import com.joshofreeness.ordertracking.domain.Customer;
-import com.joshofreeness.ordertracking.domain.Order;
-import com.joshofreeness.ordertracking.domain.Product;
+
 
 
 public class HibernateTester {
@@ -22,7 +17,7 @@ public class HibernateTester {
 		ctx.load("classpath:app-context.xml");
 		ctx.refresh();
 		
-		CustomerDao customerDao = ctx.getBean("ccustomerDao", CustomerDao.class);
+		CustomerDao customerDao = ctx.getBean("customerDao", CustomerDao.class);
 
 		// List customers without details
 		List<Customer> customers = customerDao.findAll();
