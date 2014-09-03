@@ -32,6 +32,10 @@ public class Product implements Serializable{
 		log.info("New Product Created");
 	}
 	
+	public String toString(){
+		return id + " " + name + " " + cost;
+	}
+	
 	@Column(name = "COST")
 	public float getCost() {
 		return cost;
