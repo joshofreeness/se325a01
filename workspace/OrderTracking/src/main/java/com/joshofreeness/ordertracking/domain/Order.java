@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import org.apache.log4j.Logger;
@@ -31,7 +32,11 @@ public class Order implements Serializable{
 		log.info("New Order Created");
 	}
 
-	@Column(name = "CUSTOMER")
+	public String toString(){
+		return customer.toString() + " : " + product.toString(); 
+	}
+	
+	@JoinColumn(name="CUSTOMER_ID")
 	public Customer getCustomer() {
 		return customer;
 	}

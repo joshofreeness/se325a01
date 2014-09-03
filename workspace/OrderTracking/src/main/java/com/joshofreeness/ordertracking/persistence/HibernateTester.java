@@ -6,6 +6,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.joshofreeness.ordertracking.persistence.CustomerDao;
 import com.joshofreeness.ordertracking.domain.Customer;
+import com.joshofreeness.ordertracking.domain.Order;
 import com.joshofreeness.ordertracking.domain.Product;
 
 
@@ -20,10 +21,12 @@ public class HibernateTester {
 		
 		CustomerDao customerDao = ctx.getBean("customerDao", CustomerDao.class);
 		ProductDao productDao = ctx.getBean("productDao", ProductDao.class);
+		OrderDao orderDao = ctx.getBean("orderDao",OrderDao.class);
 
 		// List customers without details
 		List<Customer> customers = customerDao.findAll();
 		List<Product> products = productDao.findAll();
+		List<Order> orders = orderDao.findAll();
 		//listCustomers(customers);	
 		
 		// List customers with details
@@ -32,10 +35,14 @@ public class HibernateTester {
 		
 		products = productDao.findAllWithDetail();
 		listProductsWithDetail(products);
+		
+		orders = orderDao.findAllWithDetail();
+		listOrdersWithDetail(orders);
 
 		
 		Customer customer;
 		Product product;
+		Order order;
 		
 		// Find customer by ID
 		customer = customerDao.findById(1l);
@@ -45,8 +52,13 @@ public class HibernateTester {
 		
 		product = productDao.findById(1l);
 		System.out.println("");
-		System.out.println("Customer with id 1:" + product);
+		System.out.println("Product with id 1:" + product);
 		System.out.println("");		
+		
+		order = orderDao.findById(1l);
+		System.out.println("");
+		System.out.println("Order with id 1:" + product);
+		System.out.println("");
 		
 		// Add new customer
 		customer = new Customer();
@@ -67,6 +79,13 @@ public class HibernateTester {
 		productDao.save(product);
 		products = productDao.findAllWithDetail();
 		listProductsWithDetail(products);
+		
+		order = new Order();
+		order.setCustomer(customer);
+		order.setProduct(product);
+		orderDao.save(order);
+		orders = orderDao.findAllWithDetail();
+		listOrdersWithDetail(orders);
 
 		// Update customer
 		customer = customerDao.findById(1l);
@@ -82,6 +101,13 @@ public class HibernateTester {
 		productDao.save(product);
 		products = productDao.findAllWithDetail();
 		listProductsWithDetail(products);
+		
+		order = orderDao.findById(1l);
+		order.setCustomer(customer);
+		
+		orderDao.save(order);
+		orders = orderDao.findAllWithDetail();
+		listOrdersWithDetail(orders);
 		
 		
 		// Delete customer
@@ -119,6 +145,15 @@ public class HibernateTester {
 		System.out.println("");
 		System.out.println("Listing products with details:");
 		for (Product customer: customers) {
+			System.out.println(customer);
+			System.out.println();
+		}		
+	}
+	
+	private static void listOrdersWithDetail(List<Order> customers) {
+		System.out.println("");
+		System.out.println("Listing orders with details:");
+		for (Order customer: customers) {
 			System.out.println(customer);
 			System.out.println();
 		}		

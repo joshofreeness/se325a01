@@ -2,6 +2,8 @@ package com.joshofreeness.ordertracking.persistence;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,13 @@ public class OrderDaoImpl implements OrderDao{
 	
 	private final Logger log = Logger.getLogger(OrderDaoImpl.class);
 	private SessionFactory sessionFactory;
+	
+	@Resource
+	public void setSessionFactory(SessionFactory s){
+		sessionFactory = s;
+		//TODO: Change this statement
+		log.debug("SessionFactory class: " + sessionFactory.getClass().getName());
+	}
 
 
 	@Override
@@ -49,6 +58,10 @@ public class OrderDaoImpl implements OrderDao{
 		sessionFactory.getCurrentSession().saveOrUpdate(order);
 		log.info("Order saved with Id: " + order.getId());
 		return order;
+	}
+	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
 }
