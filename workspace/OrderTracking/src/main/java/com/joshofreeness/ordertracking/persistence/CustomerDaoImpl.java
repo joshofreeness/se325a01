@@ -2,6 +2,8 @@ package com.joshofreeness.ordertracking.persistence;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -17,9 +19,16 @@ public class CustomerDaoImpl implements CustomerDao{
 	private final Logger log = Logger.getLogger(CustomerDaoImpl.class);
 	private SessionFactory sessionFactory;
 
+	@Resource
+	public void setSessionFactory(SessionFactory s){
+		sessionFactory = s;
+		//TODO: Change this statement
+		log.debug("SessionFactory class: " + sessionFactory.getClass().getName());
+	}
 	
+	@Transactional(readOnly=true)
 	public List<Customer> findAll() {
-		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer as c").list();
+		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer c").list();
 		return result;
 	}
 
@@ -31,7 +40,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
 	public List<Customer> findAllWithDetail() {
 		//TODO: Edit the query so that it joins tables with orders
-		List<Customer> result = sessionFactory.getCurrentSession().getNamedQuery("from Customer as c").list();
+		List<Customer> result = sessionFactory.getCurrentSession().getNamedQuery("from Customer c").list();
 		return result;
 	}
 
@@ -44,6 +53,10 @@ public class CustomerDaoImpl implements CustomerDao{
 		sessionFactory.getCurrentSession().saveOrUpdate(customer);
 		log.info("Customer saved with name: " + customer.getFirstName()+ " "+ customer.getLastName());
 		return customer;
+	}
+	
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
 }
