@@ -42,6 +42,7 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public List<Product> findAllWithDetail() {
 		//TODO: Edit the query so that it joins tables with orders
+		//TODO: This method may not be needed
 		List<Product> result = sessionFactory.getCurrentSession().createQuery("from Product as p").list();
 		return result;
 	}

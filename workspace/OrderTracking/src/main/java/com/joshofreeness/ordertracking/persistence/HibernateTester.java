@@ -76,6 +76,12 @@ public class HibernateTester {
 		customers = customerDao.findAllWithDetail();
 		listCustomersWithDetail(customers);
 		
+		product = productDao.findById(1l);
+		product.setName("Changed name");
+		
+		productDao.save(product);
+		products = productDao.findAllWithDetail();
+		listProductsWithDetail(products);
 		
 		
 		// Delete customer
@@ -83,6 +89,11 @@ public class HibernateTester {
 		customerDao.delete(customer);
 		customers = customerDao.findAllWithDetail();
 		listCustomersWithDetail(customers);	
+		
+		product = productDao.findById(1l);
+		productDao.delete(product);
+		products = productDao.findAllWithDetail();
+		listProductsWithDetail(products);
 		
 	}
 	
