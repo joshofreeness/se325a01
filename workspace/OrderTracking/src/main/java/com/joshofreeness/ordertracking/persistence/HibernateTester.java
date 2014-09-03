@@ -40,6 +40,10 @@ public class HibernateTester {
 		customer = new Customer();
 		customer.setFirstName("Michael");
 		customer.setLastName("Jackson");
+		customer.setAddress("PlaceNear");
+		customer.setEmail("ME@place.com");
+		customer.setMobPhone(95);
+		customer.setSpecialInstructions("GO TO THAT PLACE");
 		customer.setCredit(200);
 		customerDao.save(customer);
 		customers = customerDao.findAllWithDetail();

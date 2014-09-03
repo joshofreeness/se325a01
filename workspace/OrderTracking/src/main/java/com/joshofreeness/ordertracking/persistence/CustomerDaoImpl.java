@@ -45,8 +45,11 @@ public class CustomerDaoImpl implements CustomerDao{
 	}
 
 	public Customer findById(Long id) {
-		Customer result = (Customer) sessionFactory.getCurrentSession().createQuery("from Customer as c where c.id = :id").setParameter("id", id);
-		return result;
+		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer as c where c.id = :id").setParameter("id", id).list();
+		if (result.size() < 1){
+			return null;
+		} 
+		return result.get(0);
 	}
 
 	public Customer save(Customer customer) {

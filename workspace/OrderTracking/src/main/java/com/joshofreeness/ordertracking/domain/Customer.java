@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 public class Customer implements Serializable{
 
 	private static final long serialVersionUID = 7722022490094349455L;
-	private int id;
+	private long id;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -33,12 +33,15 @@ public class Customer implements Serializable{
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID")
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
+	public String toString(){
+		return firstName + " " + lastName + " " + address;
+	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
