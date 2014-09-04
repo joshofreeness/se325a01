@@ -22,8 +22,6 @@ public class OrderDaoImpl implements OrderDao{
 	@Resource
 	public void setSessionFactory(SessionFactory s){
 		sessionFactory = s;
-		//TODO: Change this statement
-		log.debug("SessionFactory class: " + sessionFactory.getClass().getName());
 	}
 
 

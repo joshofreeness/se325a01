@@ -22,8 +22,6 @@ public class CustomerDaoImpl implements CustomerDao{
 	@Resource
 	public void setSessionFactory(SessionFactory s){
 		sessionFactory = s;
-		//TODO: Change this statement
-		log.debug("SessionFactory class: " + sessionFactory.getClass().getName());
 	}
 	
 	@Transactional(readOnly=true)
