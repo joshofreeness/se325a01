@@ -84,6 +84,11 @@ public class HibernateTester {
 		order.setCustomer(customer);
 		order.setProduct(product);
 		orderDao.save(order);
+		
+		order = new Order();
+		order.setCustomer(customerDao.findById(3l));
+		order.setProduct(productDao.findById(3l));
+		orderDao.save(order);
 		orders = orderDao.findAllWithDetail();
 		listOrdersWithDetail(orders);
 
@@ -107,8 +112,10 @@ public class HibernateTester {
 		
 		orderDao.save(order);
 		orders = orderDao.findAllWithDetail();
+		System.out.println("-----------------------------------------------------");
 		listOrdersWithDetail(orders);
 		
+		//order = orderDao.findById(1l);
 		
 		// Delete customer
 		customer = customerDao.findById(1l);
@@ -120,6 +127,16 @@ public class HibernateTester {
 		productDao.delete(product);
 		products = productDao.findAllWithDetail();
 		listProductsWithDetail(products);
+		
+		orders = orderDao.findAllWithDetail();
+		System.out.println("0----------------------------0-------------------------0");
+		listOrdersWithDetail(orders);
+		order = orderDao.findById(2l);
+		orderDao.delete(order);
+		orders = orderDao.findAllWithDetail();
+		System.out.println("1----------------------------1-------------------------1");
+		listOrdersWithDetail(orders);
+		
 		
 	}
 	

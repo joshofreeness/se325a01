@@ -29,7 +29,7 @@ public class OrderDaoImpl implements OrderDao{
 
 	@Override
 	public List<Order> findAll() {
-		List<Order> result = sessionFactory.getCurrentSession().createQuery("from Order_table as o").list();
+		List<Order> result = sessionFactory.getCurrentSession().createQuery("from Order o").list();
 		return result;
 	}
 
@@ -43,14 +43,19 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public List<Order> findAllWithDetail() {
 		//TODO: Edit the query so that it joins tables with orders
-		List<Order> result = sessionFactory.getCurrentSession().getNamedQuery("from Order_table as p").list();
+		List<Order> result = sessionFactory.getCurrentSession().createQuery("from Order o").list();
 		return result;
 	}
 
 	@Override
 	public Order findById(Long id) {
-		Order result = (Order) sessionFactory.getCurrentSession().getNamedQuery("from Order_table as o where o.id = :id").setParameter("id", id);
-		return result;
+		List<Order> result = sessionFactory.getCurrentSession().createQuery("from Order as o where o.id = :id").setParameter("id", id).list();
+		if (result.size() < 1){
+			log.info("RETURNED NULL "+ result.size());
+			return null;
+		} 
+		log.info("RETURNED OBJECT");
+		return result.get(0);
 	}
 
 	@Override

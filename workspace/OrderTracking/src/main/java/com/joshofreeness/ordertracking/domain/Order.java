@@ -4,11 +4,13 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.apache.log4j.Logger;
@@ -33,10 +35,11 @@ public class Order implements Serializable{
 	}
 
 	public String toString(){
-		return customer.toString() + " : " + product.toString(); 
+		return id + " -- " + customer.toString() + " : " + product.toString(); 
 	}
 	
-	@JoinColumn(name="CUSTOMER_ID")
+	@OneToOne(orphanRemoval=true, cascade=CascadeType.ALL)
+	@JoinColumn(name = "CUSTOMER_ID")
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -45,7 +48,8 @@ public class Order implements Serializable{
 		this.customer = customer;
 	}
 	
-	@Column(name = "PRODUCT")
+	@OneToOne(orphanRemoval=true, cascade=CascadeType.ALL)
+	@JoinColumn(name = "PRODUCT_ID")
 	public Product getProduct() {
 		return product;
 	}
