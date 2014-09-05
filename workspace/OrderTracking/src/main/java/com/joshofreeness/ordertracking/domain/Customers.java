@@ -7,21 +7,21 @@ public class Customers implements Serializable {
 
 
 	private static final long serialVersionUID = 2626336752689719901L;
-	private List<Customer> contacts;
+	private List<Customer> customers;
 
 	public Customers() {
 	}
 	
 	public Customers(List<Customer> contacts) {
-		this.contacts = contacts;
+		this.customers = contacts;
 	}
 	
 	public List<Customer> getContacts() {
-		return contacts;
+		return customers;
 	}
 
 	public void setContacts(List<Customer> contacts) {
-		this.contacts = contacts;
+		this.customers = contacts;
 	}
 	 
 }

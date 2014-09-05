@@ -7,21 +7,21 @@ public class Products implements Serializable {
 
 
 	private static final long serialVersionUID = 2626336752689719901L;
-	private List<Product> contacts;
+	private List<Product> products;
 
 	public Products() {
 	}
 	
 	public Products(List<Product> contacts) {
-		this.contacts = contacts;
+		this.products = contacts;
 	}
 	
 	public List<Product> getContacts() {
-		return contacts;
+		return products;
 	}
 
 	public void setContacts(List<Product> contacts) {
-		this.contacts = contacts;
+		this.products = contacts;
 	}
 	 
 }

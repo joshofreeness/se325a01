@@ -1,0 +1,44 @@
+<mapping>
+
+    <class name="com.joshofreeness.ordertracking.domain.Customers">
+        <field name="customers" type="com.joshofreeness.ordertracking.domain.Customer" collection="arraylist">
+            <bind-xml name="customer"/>
+        </field>    
+    </class>
+
+    <class name="com.joshofreeness.ordertracking.domain.Customer" identity="id">
+    
+        <map-to xml="customer" />
+        
+        <field name="id" type="long">
+            <bind-xml name="id" node="element"/>
+        </field>             
+        <field name="firstName" type="string">
+            <bind-xml name="firstName" node="element" />
+        </field>
+        <field name="lastName" type="string">
+            <bind-xml name="lastName" node="element" />
+        </field> 
+        <field name="address" type="string">
+            <bind-xml name="address" node="element" />
+        </field> 
+        <field name="version" type="integer">
+            <bind-xml name="version" node="element" />
+        </field>  
+        <field name="mobPhone" type="integer">
+        	<bind-xml name="mobPhone" node="element"/>
+        </field>  
+        <field name="email" type="string">
+            <bind-xml name="email" node="element" />
+        </field>  
+        <field name="specialInstructions" type="string">
+            <bind-xml name="specialInstructions" node="element" />
+        </field>  
+        <field name="credit" type="long">
+        	<bind-xml name="credit" node="element"/>
+        </field>            
+    
+    </class>
+    
+   
+</mapping>
