@@ -67,7 +67,7 @@ public class ServerClientMain {
 
 	
 	private static void listCustomers(Customers contacts) {
-		for (Customer contact: contacts.getContacts()) {
+		for (Customer contact: contacts.getCustomers()) {
 			System.out.println(contact);
 		}	
 		System.out.println("");

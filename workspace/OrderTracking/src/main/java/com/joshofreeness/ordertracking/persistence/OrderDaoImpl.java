@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.joshofreeness.ordertracking.domain.Order;
-import com.joshofreeness.ordertracking.domain.Product;
+
 
 @Repository("orderDao")
 @Transactional

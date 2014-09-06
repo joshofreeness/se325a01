@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.joshofreeness.ordertracking.domain.Customer;
 import com.joshofreeness.ordertracking.domain.Product;
 
 @Repository("productDao")

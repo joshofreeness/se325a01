@@ -15,7 +15,8 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.joshofreeness.ordertracking.domain.Customer;
 import com.joshofreeness.ordertracking.domain.Customers;
-import com.joshofreeness.ordertracking.persistence.CustomerDaoImpl;
+import com.joshofreeness.ordertracking.persistence.CustomerDao;
+
 
 @Controller
 @RequestMapping(value = "/customers")
@@ -24,7 +25,7 @@ public class CustomerController {
 	final Logger log = LoggerFactory.getLogger(CustomerController.class);
 	
 	@Autowired
-	CustomerDaoImpl customerDao; 
+	CustomerDao customerDao; 
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody

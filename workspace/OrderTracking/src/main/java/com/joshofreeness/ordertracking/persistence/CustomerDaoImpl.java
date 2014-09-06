@@ -7,11 +7,13 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.joshofreeness.ordertracking.domain.Customer;
-import com.joshofreeness.ordertracking.domain.Product;
 
+
+@Service("customerDao")
 @Repository("customerDao")
 @Transactional
 public class CustomerDaoImpl implements CustomerDao{

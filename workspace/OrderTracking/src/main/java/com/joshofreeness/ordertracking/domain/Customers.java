@@ -12,16 +12,16 @@ public class Customers implements Serializable {
 	public Customers() {
 	}
 	
-	public Customers(List<Customer> contacts) {
-		this.customers = contacts;
+	public Customers(List<Customer> customers) {
+		this.customers = customers;
 	}
 	
-	public List<Customer> getContacts() {
+	public List<Customer> getCustomers() {
 		return customers;
 	}
 
-	public void setContacts(List<Customer> contacts) {
-		this.customers = contacts;
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
 	}
 	 
 }
