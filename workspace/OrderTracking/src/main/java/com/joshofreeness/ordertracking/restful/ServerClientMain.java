@@ -63,6 +63,11 @@ public class ServerClientMain {
         newcustomer.setCredit(200);
         newcustomer = restTemplate.postForObject(URL_CREATE_CUSTOMER, newcustomer, Customer.class);
 		System.out.println("Contact created successfully: " + newcustomer);    
+		
+		// Test retrieve all contacts
+		System.out.println("Testing retrieve all contacts:");
+		customers = restTemplate.getForObject(URL_GET_ALL_CUSTOMERS, Customers.class);
+		listCustomers(customers); 
 	}
 
 	
