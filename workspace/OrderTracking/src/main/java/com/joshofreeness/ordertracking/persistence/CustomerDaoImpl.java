@@ -31,19 +31,19 @@ public class CustomerDaoImpl implements CustomerDao{
 		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer c").list();
 		return result;
 	}
-
+	@Transactional
 	public void delete(Customer customer) {
 		sessionFactory.getCurrentSession().delete(customer);
 		log.info("Customer deleted with Name: " + customer.getFirstName()+ " "+ customer.getLastName());
 		
 	}
-
+	@Transactional
 	public List<Customer> findAllWithDetail() {
 		//TODO: Edit the query so that it joins tables with orders
 		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer c").list();
 		return result;
 	}
-
+	@Transactional
 	public Customer findById(Long id) {
 		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer as c where c.id = :id").setParameter("id", id).list();
 		if (result.size() < 1){
@@ -51,7 +51,7 @@ public class CustomerDaoImpl implements CustomerDao{
 		} 
 		return result.get(0);
 	}
-
+	@Transactional
 	public Customer save(Customer customer) {
 		sessionFactory.getCurrentSession().saveOrUpdate(customer);
 		log.info("Customer saved with name: " + customer.getFirstName()+ " "+ customer.getLastName());

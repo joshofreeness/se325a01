@@ -8,11 +8,11 @@ import com.joshofreeness.ordertracking.domain.Customers;
 
 public class ServerClientMain {
 	
-	private static final String URL_GET_ALL_CUSTOMERS = "http://localhost:8080/OrderTracking/customers";
-	private static final String URL_GET_CUSTOMER_BY_ID = "http://localhost:8080/OrderTracking/customers/{id}";
-	private static final String URL_CREATE_CUSTOMER = "http://localhost:8080/OrderTracking/customers/";
-	private static final String URL_UPDATE_CUSTOMER = "http://localhost:8080/OrderTracking/customers/{id}";
-	private static final String URL_DELETE_CUSTOMER = "http://localhost:8080/OrderTracking/customers/{id}";	
+	private static final String URL_GET_ALL_CUSTOMERS = "http://localhost:8080/ordertracking/customers";
+	private static final String URL_GET_CUSTOMER_BY_ID = "http://localhost:8080/ordertracking/customers/{id}";
+	private static final String URL_CREATE_CUSTOMER = "http://localhost:8080/ordertracking/customers/";
+	private static final String URL_UPDATE_CUSTOMER = "http://localhost:8080/ordertracking/customers/{id}";
+	private static final String URL_DELETE_CUSTOMER = "http://localhost:8080/ordertracking/customers/{id}";	
 
 
 	public static void main(String[] args) {
