@@ -15,7 +15,6 @@ import com.joshofreeness.ordertracking.domain.Customer;
 
 
 @Repository("customerDao")
-@Service("customerDao")
 @Transactional
 public class CustomerDaoImpl implements CustomerDao{
 	
