@@ -13,8 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.joshofreeness.ordertracking.domain.Customer;
 
 
-@Service("customerDao")
+
 @Repository("customerDao")
+@Service("customerDao")
 @Transactional
 public class CustomerDaoImpl implements CustomerDao{
 	
