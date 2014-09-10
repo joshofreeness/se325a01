@@ -112,20 +112,22 @@ public class ServerClientMain {
 		listOrders(orders); 
 		
 		// Testing delete contact
-		restTemplate.delete(URL_DELETE_CUSTOMER, 1);
-		System.out.println("Testing delete contact by id :");
+		restTemplate.delete(URL_DELETE_ORDER, 1);
+		System.out.println("Testing delete order by id :");
+        orders = restTemplate.getForObject(URL_GET_ALL_ORDERS, Orders.class);
+        listOrders(orders);
+        
+		restTemplate.delete(URL_DELETE_CUSTOMER, 3);
+		System.out.println("Testing delete customer by id :");
         customers = restTemplate.getForObject(URL_GET_ALL_CUSTOMERS, Customers.class);
         listCustomers(customers);
         
-        restTemplate.delete(URL_DELETE_PRODUCT, 1);
+        restTemplate.delete(URL_DELETE_PRODUCT, 3);
 		System.out.println("Testing delete product by id :");
         products = restTemplate.getForObject(URL_GET_ALL_PRODUCTS, Products.class);
         listProducts(products);
         
-        restTemplate.delete(URL_DELETE_ORDER, 1);
-		System.out.println("Testing delete product by id :");
-        orders = restTemplate.getForObject(URL_GET_ALL_ORDERS, Orders.class);
-        listOrders(orders);
+        
         
 		// Testing create contact
         System.out.println("Testing create contact :");
