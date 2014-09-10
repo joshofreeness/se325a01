@@ -5,6 +5,12 @@
             <bind-xml name="customer"/>
         </field>    
     </class>
+    
+    <class name="com.joshofreeness.ordertracking.domain.Products">
+        <field name="products" type="com.joshofreeness.ordertracking.domain.Product" collection="arraylist">
+            <bind-xml name="product"/>
+        </field>    
+    </class>
 
     <class name="com.joshofreeness.ordertracking.domain.Customer" identity="id">
     
@@ -36,6 +42,23 @@
         </field>            
     
     </class>
+    
+
+    <class name="com.joshofreeness.ordertracking.domain.Product" identity="id">
+    
+        <map-to xml="product" />
+        
+        <field name="id" type="long">
+            <bind-xml name="id" node="element"/>
+        </field>             
+        <field name="name" type="string">
+            <bind-xml name="name" node="element" />
+        </field>
+        <field name="cost" type="float">
+        	<bind-xml name="cost" node="element"/>
+        </field>            
+    
+    </class> 
     
    
 </mapping>

@@ -26,6 +26,7 @@ public class OrderDaoImpl implements OrderDao{
 
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Order> findAll() {
 		List<Order> result = sessionFactory.getCurrentSession().createQuery("from Order o").list();
 		return result;

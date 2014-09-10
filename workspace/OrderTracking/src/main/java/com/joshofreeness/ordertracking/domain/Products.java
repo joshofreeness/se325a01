@@ -12,16 +12,16 @@ public class Products implements Serializable {
 	public Products() {
 	}
 	
-	public Products(List<Product> contacts) {
-		this.products = contacts;
+	public Products(List<Product> products) {
+		this.products = products;
 	}
 	
-	public List<Product> getContacts() {
+	public List<Product> getProducts() {
 		return products;
 	}
 
-	public void setContacts(List<Product> contacts) {
-		this.products = contacts;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 	 
 }
