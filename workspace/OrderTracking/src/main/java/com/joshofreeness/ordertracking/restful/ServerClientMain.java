@@ -5,6 +5,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.joshofreeness.ordertracking.domain.Customer;
 import com.joshofreeness.ordertracking.domain.Customers;
+import com.joshofreeness.ordertracking.domain.Order;
+import com.joshofreeness.ordertracking.domain.Orders;
 import com.joshofreeness.ordertracking.domain.Product;
 import com.joshofreeness.ordertracking.domain.Products;
 
@@ -21,6 +23,12 @@ public class ServerClientMain {
 	private static final String URL_CREATE_PRODUCT = "http://localhost:8080/ordertracking/products/";
 	private static final String URL_UPDATE_PRODUCT = "http://localhost:8080/ordertracking/products/{id}";
 	private static final String URL_DELETE_PRODUCT = "http://localhost:8080/ordertracking/products/{id}";	
+	
+	private static final String URL_GET_ALL_ORDERS = "http://localhost:8080/ordertracking/orders";
+	private static final String URL_GET_ORDER_BY_ID = "http://localhost:8080/ordertracking/orders/{id}";
+	private static final String URL_CREATE_ORDER = "http://localhost:8080/ordertracking/orders/";
+	private static final String URL_UPDATE_ORDER = "http://localhost:8080/ordertracking/orders/{id}";
+	private static final String URL_DELETE_ORDER = "http://localhost:8080/ordertracking/orders/{id}";	
 
 
 	public static void main(String[] args) {
@@ -33,8 +41,20 @@ public class ServerClientMain {
 		Customer customer;
 		Products products;
 		Product product;
+		Orders orders;
+		Order order;
 		
 		RestTemplate restTemplate = ctx.getBean("restTemplate", RestTemplate.class);
+		
+		order = new Order();
+		order.setCustomer(restTemplate.getForObject(URL_GET_CUSTOMER_BY_ID, Customer.class, 1));
+		order.setProduct(restTemplate.getForObject(URL_GET_PRODUCT_BY_ID, Product.class, 1));
+		Order order1 = new Order();
+		order1.setCustomer(restTemplate.getForObject(URL_GET_CUSTOMER_BY_ID, Customer.class, 2));
+		order1.setProduct(restTemplate.getForObject(URL_GET_PRODUCT_BY_ID, Product.class, 2));
+		System.out.println("Testing creating order:");
+		order = restTemplate.postForObject(URL_CREATE_ORDER, order, Order.class);
+		order = restTemplate.postForObject(URL_CREATE_ORDER, order1, Order.class);
 		
 		// Test retrieve all contacts
 		System.out.println("Testing retrieve all contacts:");
@@ -45,6 +65,10 @@ public class ServerClientMain {
 		products = restTemplate.getForObject(URL_GET_ALL_PRODUCTS, Products.class);
 		listProducts(products); 
 		
+		System.out.println("Testing retrieve all orders:");
+		orders = restTemplate.getForObject(URL_GET_ALL_ORDERS, Orders.class);
+		listOrders(orders); 
+		
 		// Test retrieve contact by id
 		System.out.println("Testing retrieve a contact by id :");
 		customer = restTemplate.getForObject(URL_GET_CUSTOMER_BY_ID, Customer.class, 1);
@@ -54,6 +78,11 @@ public class ServerClientMain {
 		System.out.println("Testing retrieve a product by id :");
 		product = restTemplate.getForObject(URL_GET_PRODUCT_BY_ID, Product.class, 1);
 		System.out.println(product);
+		System.out.println("");
+		
+		System.out.println("Testing retrieve a order by id :");
+		order = restTemplate.getForObject(URL_GET_ORDER_BY_ID, Order.class, 1);
+		System.out.println(order);
 		System.out.println("");
 		
 		// Test update contact
@@ -71,6 +100,17 @@ public class ServerClientMain {
 		System.out.println("Contact update successfully: " + product);
 		System.out.println("");	
 		
+		order = restTemplate.getForObject(URL_UPDATE_ORDER, Order.class, 1);
+		order.setCustomer(customer);
+		System.out.println("Testing update order by id :");
+		restTemplate.put(URL_UPDATE_ORDER, order, 1);
+		System.out.println("Contact update successfully: " + order);
+		System.out.println("");	
+		
+		System.out.println("Testing retrieve all orders:");
+		orders = restTemplate.getForObject(URL_GET_ALL_ORDERS, Orders.class);
+		listOrders(orders); 
+		
 		// Testing delete contact
 		restTemplate.delete(URL_DELETE_CUSTOMER, 1);
 		System.out.println("Testing delete contact by id :");
@@ -81,6 +121,11 @@ public class ServerClientMain {
 		System.out.println("Testing delete product by id :");
         products = restTemplate.getForObject(URL_GET_ALL_PRODUCTS, Products.class);
         listProducts(products);
+        
+        restTemplate.delete(URL_DELETE_ORDER, 1);
+		System.out.println("Testing delete product by id :");
+        orders = restTemplate.getForObject(URL_GET_ALL_ORDERS, Orders.class);
+        listOrders(orders);
         
 		// Testing create contact
         System.out.println("Testing create contact :");
@@ -112,6 +157,10 @@ public class ServerClientMain {
 		System.out.println("Testing retrieve all products:");
 		products = restTemplate.getForObject(URL_GET_ALL_PRODUCTS, Products.class);
 		listProducts(products); 
+		
+		System.out.println("Testing retrieve all orders:");
+		orders = restTemplate.getForObject(URL_GET_ALL_ORDERS, Orders.class);
+		listOrders(orders); 
 	}
 
 	
@@ -124,6 +173,13 @@ public class ServerClientMain {
 	
 	private static void listProducts(Products contacts) {
 		for (Product contact: contacts.getProducts()) {
+			System.out.println(contact);
+		}	
+		System.out.println("");
+	}
+	
+	private static void listOrders(Orders contacts) {
+		for (Order contact: contacts.getOrders()) {
 			System.out.println(contact);
 		}	
 		System.out.println("");

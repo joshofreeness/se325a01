@@ -16,11 +16,11 @@ public class Orders implements Serializable {
 		this.orders = contacts;
 	}
 	
-	public List<Order> getContacts() {
+	public List<Order> getOrders() {
 		return orders;
 	}
 
-	public void setContacts(List<Order> contacts) {
+	public void setOrders(List<Order> contacts) {
 		this.orders = contacts;
 	}
 	 
