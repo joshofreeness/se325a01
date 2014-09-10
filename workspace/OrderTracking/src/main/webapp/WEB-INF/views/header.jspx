@@ -2,7 +2,7 @@
 	xmlns:spring="http://www.springframework.org/tags" 
 	version="2.0">
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
-	<%-- <jsp:output omit-xml-declaration="yes" /> --%>
+	<!-- <jsp:output omit-xml-declaration="yes" /> -->
 
     <div id="appname">
         <h1>Movie Contacts</h1>
