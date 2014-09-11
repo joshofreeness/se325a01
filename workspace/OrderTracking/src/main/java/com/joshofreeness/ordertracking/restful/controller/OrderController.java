@@ -1,11 +1,15 @@
 package com.joshofreeness.ordertracking.restful.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
+import com.joshofreeness.ordertracking.domain.Customer;
 import com.joshofreeness.ordertracking.domain.Order;
 import com.joshofreeness.ordertracking.domain.Orders;
+import com.joshofreeness.ordertracking.domain.Product;
+import com.joshofreeness.ordertracking.persistence.CustomerDao;
 import com.joshofreeness.ordertracking.persistence.OrderDao;
+import com.joshofreeness.ordertracking.persistence.ProductDao;
 
 @Controller
 @RequestMapping(value = "/orders")
@@ -25,12 +33,56 @@ public class OrderController {
 	
 	@Autowired
 	OrderDao orderDao; 
+	@Autowired
+	CustomerDao customerDao;
+	@Autowired
+	ProductDao productDao;
 
+//	@RequestMapping(method = RequestMethod.GET)
+//	@ResponseBody
+//	public Orders listData(WebRequest webRequest) {
+//		return new Orders(orderDao.findAll());
+//	}	
+	
+	
 	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
-	public Orders listData(WebRequest webRequest) {
-		return new Orders(orderDao.findAll());
-	}	
+	public String list( Model uiModel ) {
+		List<Order> orders = orderDao.findAll( );
+		uiModel.addAttribute( "orders", orders );
+		return "orders/list";
+	 }
+	
+	//Request a new Order Form
+	@RequestMapping(params = "form", method = RequestMethod.GET)
+	public String createForm(Model uiModel) {
+		List<Product> products = productDao.findAll();
+		List<Customer> customers = customerDao.findAll();
+		Order order = new Order();
+		uiModel.addAttribute("order", order);
+		uiModel.addAttribute("products", products);
+		uiModel.addAttribute("customers", customers);
+		return "orders/create";
+	}
+	
+	//Post a new product form to create new customer
+	@RequestMapping(params = "form", method = RequestMethod.POST)
+	public String createFromForm(Order order, BindingResult bindingResult, Model uiModel) {
+
+		if(bindingResult.hasErrors()) {
+			
+			uiModel.addAttribute("error", bindingResult.getAllErrors());
+			uiModel.addAttribute("order", order);
+			List<Product> products = productDao.findAll();
+			List<Customer> customers = customerDao.findAll();
+			uiModel.addAttribute("products", products);
+			uiModel.addAttribute("customers", customers);
+			return "orders/create";
+		}
+		log.info("Save order");
+		orderDao.save(order);
+		log.info("Saved order");
+		return "redirect:/orders/" + order.getId();
+	}
 
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	@ResponseBody

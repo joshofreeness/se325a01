@@ -8,6 +8,7 @@
 
 	<spring:url value="/customers?form" var="addCustomerUrl"/>
 	<spring:url value="/products?form" var="addProductUrl"/>
+	<spring:url value="/orders?form" var="addOrderUrl"/>
 	<spring:url value="/customers" var="customersUrl"/>
 	<spring:url value="/orders" var="ordersUrl"/>
 	<spring:url value="/products" var="productsUrl"/>
@@ -16,6 +17,7 @@
     <a href="${productsUrl}"><h3>Products</h3></a>
     <a href="${ordersUrl}"><h3>Orders</h3></a>
     <a href="${customersUrl}"><h3>Customers</h3></a>
+    <a href="${addOrderUrl}"><h3>Place Order</h3></a>
     <a href="${addCustomerUrl}"><h3>New customer</h3></a>
     <a href="${addProductUrl}"><h3>New product</h3></a>
 </div>
