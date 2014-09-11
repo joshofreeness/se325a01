@@ -84,6 +84,30 @@ public class CustomerController {
 		return "redirect:/customers/" + contact.getId();
 	}
 	
+	//Request an edit product form
+	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+	public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+		Customer customer = customerDao.findById(id);
+		uiModel.addAttribute("customer", customer);
+		
+		return "customers/update";
+	}
+	
+	//Post an edited product
+	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+	public String update(Customer customer, BindingResult bindingResult, Model uiModel) {
+		if(bindingResult.hasErrors()) {
+			uiModel.addAttribute("customer", customer);
+
+			return "products/update";
+		}
+		
+		customerDao.save(customer);
+
+		// Redirect the browser to a page that displays the updated Contact.
+		return "redirect:/customers/" + customer.getId();
+	}
+	
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	@ResponseBody
