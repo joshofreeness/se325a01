@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core" 
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <c:set var="formTitle" value="Update Product" />
+
+    <h1>${formTitle}</h1>
+
+    <div id="producUpdate">
+    <form:form modelAttribute="product" id="productUpdateForm" method="post">
+
+        
+
+        <form:label path="name">
+            Product Name 
+        </form:label>
+        <form:input path="name" />
+        <div>
+            <form:errors path="name" cssClass="error" />
+        </div>
+        <p/>
+
+        
+        <form:label path="cost">
+            Price
+        </form:label>
+        <form:input path="cost" />
+        <div>
+            <form:errors path="cost" cssClass="error" />
+        </div>
+        <p/>     
+        
+        <button type="submit">
+            <span>Save</span>
+        </button> 
+        <button type="reset">
+            <span>Reset</span>
+        </button>       
+                      
+    </form:form>   
+    </div>
+
+</div>

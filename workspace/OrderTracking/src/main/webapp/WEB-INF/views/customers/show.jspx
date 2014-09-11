@@ -17,7 +17,10 @@
 
 
         <table class = "table_styled">
- 
+ 			<tr>
+ 				<td> </td>
+ 				<td>Details</td>
+ 			</tr>
             <tr>
                 <td>Address</td>
                 <td>${customer.address}</td>
@@ -32,7 +35,7 @@
             </tr>    
             <tr>
                 <td>Credit</td>
-                <td>${customer.credit}</td>
+                <td>$ ${customer.credit}</td>
             </tr>
             <tr>
                 <td>Special Instructions</td>
@@ -49,6 +52,8 @@
 	private double credit; -->
        
         <a href="${editCustomerUrl}/${customer.id}?form">Edit customer</a>     
+        <p/>
+        <a href="delete/${customer.id}"> DELETE </a>
                       
     </div>
 

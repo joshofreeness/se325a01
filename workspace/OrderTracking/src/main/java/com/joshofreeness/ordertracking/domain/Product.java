@@ -22,6 +22,7 @@ public class Product implements Serializable{
 	private Long id;
 	private float cost;
 	private String name;
+	// TODO: Possibly add description
 	private final Logger log = Logger.getLogger(Product.class);
 	
 	public Product(){}

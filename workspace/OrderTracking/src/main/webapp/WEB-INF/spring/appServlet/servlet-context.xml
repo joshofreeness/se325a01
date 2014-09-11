@@ -50,6 +50,7 @@
 			<beans:list>
 				<beans:value>/WEB-INF/layouts/layouts.xml</beans:value>
 				<beans:value>/WEB-INF/views/customers/views.xml</beans:value>
+				<beans:value>/WEB-INF/views/products/views.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

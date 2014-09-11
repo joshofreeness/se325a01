@@ -38,18 +38,55 @@
         <form:label path="address">
             Address
         </form:label>
-        <form:textarea cols="60" rows="8" path="address" id="customerAddress"/>
+        <form:textarea cols="60" rows="6" path="address" id="customerAddress"/>
         <div>
             <form:errors path="address" cssClass="error" />
         </div>        
-        <p/>            
+        <p/>      
         
-        <button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-            <span class="ui-button-text">Save</span>
+        <form:label path="mobPhone">
+            Mobile Phone Number
+        </form:label>
+        <form:input path="mobPhone" />
+        <div>
+            <form:errors path="mobPhone" cssClass="error" />
+        </div>
+        <p/>   
+        
+        
+        <form:label path="email">
+            Email
+        </form:label>
+        <form:input path="email" />
+        <div>
+            <form:errors path="email" cssClass="error" />
+        </div>
+        <p/>    
+        
+        <form:label path="specialInstructions">
+            Delivery Instructions
+        </form:label>
+        <form:textarea cols="60" rows="6" path="specialInstructions" id="specialInstructions"/>
+        <div>
+            <form:errors path="specialInstructions" cssClass="error" />
+        </div>
+        <p/>   
+        
+        <form:label path="credit">
+            Credit
+        </form:label>
+        <form:input path="credit" />
+        <div>
+            <form:errors path="credit" cssClass="error" />
+        </div>
+        <p/>     
+        
+        <button type="submit">
+            <span>Save</span>
         </button> 
-        <button type="reset" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-            <span class="ui-button-text">Reset</span>
-        </button>           
+        <button type="reset">
+            <span>Reset</span>
+        </button>       
                       
     </form:form>   
     </div>

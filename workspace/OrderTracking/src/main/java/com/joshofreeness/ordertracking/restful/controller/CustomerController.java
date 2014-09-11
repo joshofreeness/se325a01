@@ -10,15 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.joshofreeness.ordertracking.domain.Customer;
 import com.joshofreeness.ordertracking.domain.Customers;
+import com.joshofreeness.ordertracking.domain.Product;
 import com.joshofreeness.ordertracking.persistence.CustomerDao;
 
 
@@ -50,6 +53,37 @@ public class CustomerController {
 		uiModel.addAttribute( "customer", customer );
 		return "customers/show";
 	}
+	
+	//Delete Product
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	public String deleteProductById(@PathVariable Long id, Model uiModel){
+		Customer customer = customerDao.findById(id);
+		customerDao.delete(customer);
+		return "redirect:/customers/";
+	}
+		
+		
+	//Request a new Customer Form
+	@RequestMapping(params = "form", method = RequestMethod.GET)
+	public String createForm(Model uiModel) {
+		Customer customer = new Customer();
+		uiModel.addAttribute("customer", customer);
+		return "customers/create";
+	}
+	//Post a new customer form to create new customer
+	@RequestMapping(params = "form", method = RequestMethod.POST)
+	public String createFromForm(Customer contact, BindingResult bindingResult, Model uiModel) {
+
+		if(bindingResult.hasErrors()) {
+			uiModel.addAttribute("contact", contact);
+			return "customers/create";
+		}
+		log.info("Save contact");
+		customerDao.save(contact);
+		log.info("Saved contact");
+		return "redirect:/customers/" + contact.getId();
+	}
+	
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	@ResponseBody
