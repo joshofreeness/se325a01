@@ -11,15 +11,15 @@
     <h1>Customer Listing</h1>
 
      <c:if test="${not empty customers}">
-		 <table>
-			 <thead>
+		 <table class="table_styled">
+			 
 				 <tr>
-					 <th>First Name</th>
-					 <th>Last Name</th>
-					 <th>Credit</th>
+					 <td>First Name</td>
+					 <td>Last Name</td>
+					 <td>Credit</td>
 				 </tr>
-			 </thead>
-		 <tbody>
+			 
+		 
 			 <c:forEach items="${customers}" var="customer">
 				 <tr>
 					 <td> <a href="${showCustomerUrl}/${customer.id}">${customer.firstName}</a> </td>
@@ -27,7 +27,7 @@
 					 <td> ${customer.credit} </td>
 				 </tr>
 			 </c:forEach>
-		 </tbody>
+		 
 		 </table> 
 	 </c:if>
 	 </div>

@@ -10,21 +10,14 @@
     
     <spring:url value="/customers" var="editCustomerUrl"/>    
 
-    <h1>Customer Information</h1>
+    <h1>Customer Information: ${customer.firstName} ${customer.lastName}</h1>
 
     <div id="contactInfo">
 
 
 
-        <table>
-            <tr>
-                <td>First name</td>
-                <td>${customer.firstName}</td>
-            </tr>
-            <tr>
-                <td>Last name</td>
-                <td>${customer.lastName}</td>
-            </tr>   
+        <table class = "table_styled">
+ 
             <tr>
                 <td>Address</td>
                 <td>${customer.address}</td>

@@ -7,7 +7,13 @@
 	<!-- <jsp:output omit-xml-declaration="yes" /> -->
 
 	<spring:url value="/customers?form" var="addCustomerUrl"/>
+	<spring:url value="/customers" var="customersUrl"/>
+	<spring:url value="/orders" var="ordersUrl"/>
+	<spring:url value="/products" var="productsUrl"/>
 
     <h3>Menu</h3>
+    <a href="${productsUrl}"><h3>Products</h3></a>
+    <a href="${ordersUrl}"><h3>Orders</h3></a>
+    <a href="${customersUrl}"><h3>Customers</h3></a>
     <a href="${addCustomerUrl}"><h3>New customer</h3></a>
 </div>
