@@ -45,9 +45,10 @@ public class CustomerController {
 	 }
 
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	@ResponseBody
-	public Customer findCustomerById(@PathVariable Long id) {		
-		return customerDao.findById(id);
+	public String findCustomerById(@PathVariable Long id, Model uiModel) {		
+		Customer customer = customerDao.findById(id);
+		uiModel.addAttribute( "customer", customer );
+		return "customers/show";
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)

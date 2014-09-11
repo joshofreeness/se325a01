@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core"  
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:joda="http://www.joda.org/joda/time/tags"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:url value="/customers" var="editCustomerUrl"/>    
+
+    <h1>Customer Information</h1>
+
+    <div id="contactInfo">
+
+
+
+        <table>
+            <tr>
+                <td>First name</td>
+                <td>${customer.firstName}</td>
+            </tr>
+            <tr>
+                <td>Last name</td>
+                <td>${customer.lastName}</td>
+            </tr>   
+            <tr>
+                <td>Address</td>
+                <td>${customer.address}</td>
+            </tr>   
+            <tr>
+                <td>Mobile Phone</td>
+                <td>${customer.mobPhone}</td>
+            </tr>  
+            <tr>
+                <td>email</td>
+                <td>${customer.email}</td>
+            </tr>    
+            <tr>
+                <td>Credit</td>
+                <td>${customer.credit}</td>
+            </tr>
+            <tr>
+                <td>Special Instructions</td>
+                <td>${customer.specialInstructions}</td>
+            </tr>                                                                                                      
+        </table>         
+        
+       <!--  private String firstName;
+	private String lastName;
+	private String address;
+	private int mobPhone;
+	private String email;
+	private String specialInstructions;
+	private double credit; -->
+       
+        <a href="${editCustomerUrl}/${customer.id}?form">Edit customer</a>     
+                      
+    </div>
+
+</div>

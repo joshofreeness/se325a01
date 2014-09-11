@@ -10,7 +10,6 @@
 
     <h1>Customer Listing</h1>
 
-	<p>Hi there</p>
      <c:if test="${not empty customers}">
 		 <table>
 			 <thead>
@@ -23,7 +22,7 @@
 		 <tbody>
 			 <c:forEach items="${customers}" var="customer">
 				 <tr>
-					 <td> <a href="customers${showCustomerUrl}/${customer.id}">${customer.firstName}</a> </td>
+					 <td> <a href="${showCustomerUrl}/${customer.id}">${customer.firstName}</a> </td>
 					 <td> ${customer.lastName} </td>
 					 <td> ${customer.credit} </td>
 				 </tr>

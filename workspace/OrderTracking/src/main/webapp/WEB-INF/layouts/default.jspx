@@ -10,11 +10,23 @@
       
       <head>
 		<title>Online Ordering</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=8" />
+		<spring:url value="/resources/style.css" var="css_url" />
+        <link rel="stylesheet" type="text/css" media="screen" href="${css_url}" />
+		<title>Order System App</title>
 	</head>
-      <body>
-      	<tiles:insertAttribute name="header" ignore="true" />
-      	<tiles:insertAttribute name="menu" ignore="true" />
-		<tiles:insertAttribute name="body"/> 
-		<tiles:insertAttribute name="footer" ignore="true"/>
+      <body class="tundra spring">
+      	<div id="headerWrapper">
+      		<tiles:insertAttribute name="header" ignore="true" />
+      	</div>
+      	<div id="wrapper">
+      		<tiles:insertAttribute name="menu" ignore="true" />
+      	
+	      	<div id="main">
+				<tiles:insertAttribute name="body"/> 
+				<tiles:insertAttribute name="footer" ignore="true"/>
+			</div>
+		</div>
       </body>
 </html>

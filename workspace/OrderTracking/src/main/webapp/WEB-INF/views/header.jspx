@@ -5,6 +5,6 @@
 	<!-- <jsp:output omit-xml-declaration="yes" /> -->
 
     <div id="appname">
-        <h1>Movie Contacts</h1>
+        <h1>Order System</h1>
     </div>
 </div>
