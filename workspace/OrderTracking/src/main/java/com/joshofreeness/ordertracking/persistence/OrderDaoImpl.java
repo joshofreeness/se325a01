@@ -25,6 +25,7 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly=true)
 	public List<Order> findAll() {
@@ -39,13 +40,8 @@ public class OrderDaoImpl implements OrderDao{
 		
 	}
 
-	@Override
-	public List<Order> findAllWithDetail() {
-		//TODO: Edit the query so that it joins tables with orders
-		List<Order> result = sessionFactory.getCurrentSession().createQuery("from Order o").list();
-		return result;
-	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Order findById(Long id) {
 		List<Order> result = sessionFactory.getCurrentSession().createQuery("from Order as o where o.id = :id").setParameter("id", id).list();

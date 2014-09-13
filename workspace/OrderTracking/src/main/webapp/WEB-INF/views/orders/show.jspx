@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core"  
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:joda="http://www.joda.org/joda/time/tags"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:url value="/customers" var="editCustomerUrl"/>    
+
+    <h1>Customer Information: ${customer.firstName} ${customer.lastName}</h1>
+
+    <div id="orderInfo">
+
+
+
+        <table class = "table_styled">
+ 			<tr>
+ 				<td> </td>
+ 				<td>Details</td>
+ 			</tr>
+            <tr>
+                <td>Customer</td>
+                <td>${order.customer.firstName} ${order.customer.lastName}</td>
+            </tr>   
+            <tr>
+                <td>Product</td>
+                <td>${order.product.name}</td>
+            </tr>  
+                                                                                                        
+        </table>         
+        
+      
+        <a href="${editCustomerUrl}/${customer.id}?form">Edit customer</a>     
+        <p/>
+        <a href="delete/${customer.id}"> DELETE </a>
+                      
+    </div>
+
+</div>

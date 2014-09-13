@@ -23,8 +23,8 @@
 			 <c:forEach items="${orders}" var="order">
 				 <tr>
 					 <td> <a href="${showOrderUrl}/${order.id}">${order.id}</a> </td>
-					 <td> $ ${order.customer.firstName} </td>
-					 <td> $ ${order.product.name} </td>
+					 <td> ${order.customer.firstName} ${order.customer.lastName}</td>
+					 <td> ${order.product.name} </td>
 				 </tr>
 			 </c:forEach>
 		 

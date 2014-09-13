@@ -10,8 +10,6 @@ public interface CustomerDao {
 
 		public void delete(Customer customer);
 
-		public List<Customer> findAllWithDetail();
-
 		public Customer findById(Long id);
 		
 		public Customer save(Customer customer);

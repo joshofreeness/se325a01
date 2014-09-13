@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.joshofreeness.ordertracking.domain.Customer;
@@ -26,6 +25,7 @@ public class CustomerDaoImpl implements CustomerDao{
 		sessionFactory = s;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Transactional(readOnly=true)
 	public List<Customer> findAll() {
 		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer c").list();
@@ -37,12 +37,8 @@ public class CustomerDaoImpl implements CustomerDao{
 		log.info("Customer deleted with Name: " + customer.getFirstName()+ " "+ customer.getLastName());
 		
 	}
-	@Transactional
-	public List<Customer> findAllWithDetail() {
-		//TODO: Edit the query so that it joins tables with orders
-		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer c").list();
-		return result;
-	}
+
+	@SuppressWarnings("unchecked")
 	@Transactional
 	public Customer findById(Long id) {
 		List<Customer> result = sessionFactory.getCurrentSession().createQuery("from Customer as c where c.id = :id").setParameter("id", id).list();

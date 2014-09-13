@@ -10,7 +10,6 @@ public interface OrderDao {
 
 	public void delete(Order order);
 
-	public List<Order> findAllWithDetail();
 
 	public Order findById(Long id);
 	

@@ -10,8 +10,6 @@ public interface ProductDao {
 
 	public void delete(Product product);
 
-	public List<Product> findAllWithDetail();
-
 	public Product findById(Long id);
 	
 	public Product save(Product product);

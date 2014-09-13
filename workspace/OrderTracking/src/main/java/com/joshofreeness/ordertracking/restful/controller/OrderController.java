@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.WebRequest;
 
 import com.joshofreeness.ordertracking.domain.Customer;
 import com.joshofreeness.ordertracking.domain.Order;
-import com.joshofreeness.ordertracking.domain.Orders;
 import com.joshofreeness.ordertracking.domain.Product;
 import com.joshofreeness.ordertracking.persistence.CustomerDao;
 import com.joshofreeness.ordertracking.persistence.OrderDao;
@@ -52,15 +50,19 @@ public class OrderController {
 		return "orders/list";
 	 }
 	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public String findOrderrById(@PathVariable Long id, Model uiModel) {		
+		Order order = orderDao.findById(id);
+		uiModel.addAttribute( "order", order );
+		return "orders/show";
+	}
+	
 	//Request a new Order Form
 	@RequestMapping(params = "form", method = RequestMethod.GET)
 	public String createForm(Model uiModel) {
 		List<Product> products = productDao.findAll();
 		List<Customer> customers = customerDao.findAll();
-		Integer[] list_ids = new Integer[2];
-		Order order = new Order();
 		IdParserForNewOrder id_object = new IdParserForNewOrder();
-		uiModel.addAttribute("order", order);
 		uiModel.addAttribute("products", products);
 		uiModel.addAttribute("customers", customers);
 		uiModel.addAttribute("id_object",id_object);
@@ -73,14 +75,13 @@ public class OrderController {
 
 		if(bindingResult.hasErrors()) {
 			
-//			uiModel.addAttribute("error", bindingResult.getAllErrors());
-//			uiModel.addAttribute("order", order);
-//			List<Product> products = productDao.findAll();
-//			List<Customer> customers = customerDao.findAll();
-//			Integer[] list_ids = new Integer[2];
-//			uiModel.addAttribute("products", products);
-//			uiModel.addAttribute("customers", customers);
-//			uiModel.addAttribute("list_ids", list_ids);
+			uiModel.addAttribute("error", bindingResult.getAllErrors());
+			List<Product> products = productDao.findAll();
+			List<Customer> customers = customerDao.findAll();
+			IdParserForNewOrder id_object = new IdParserForNewOrder();
+			uiModel.addAttribute("products", products);
+			uiModel.addAttribute("customers", customers);
+			uiModel.addAttribute("id_object", id_object);
 			return "orders/create";
 		}
 		log.info("Save order");
@@ -92,11 +93,11 @@ public class OrderController {
 		return "redirect:/orders/" + order.getId();
 	}
 
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	@ResponseBody
-	public Order findCustomerById(@PathVariable Long id) {		
-		return orderDao.findById(id);
-	}
+//	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+//	@ResponseBody
+//	public Order findCustomerById(@PathVariable Long id) {		
+//		return orderDao.findById(id);
+//	}
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	@ResponseBody

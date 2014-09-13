@@ -35,7 +35,7 @@
    <form:form modelAttribute="id_object" id="orderUpdateForm" method="post">
 
         
-		<form:label path="customer">
+		<!-- <form:label path="customer">
             Customer Id
         </form:label>
         <form:input path="customer" />
@@ -50,7 +50,15 @@
         <div>
             <form:errors path="product" cssClass="error" />
         </div>
-        <p/>
+        <p/> -->
+        
+        <form:select path="product">
+        	<form:options items="${products}"  itemValue="id" itemLabel="name"/>
+    	</form:select>
+        <form:select path="customer">
+        	<form:options items="${customers}"  itemValue="id"/>
+    	</form:select>
+		<form:errors path="${error}" />
 		<form:errors path="${error}" />
         
         
