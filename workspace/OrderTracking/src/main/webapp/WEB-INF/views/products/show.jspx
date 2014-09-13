@@ -24,7 +24,11 @@
             <tr>
                 <td>Cost</td>
                 <td>$ ${product.cost}</td>
-            </tr>   
+            </tr>  
+            <tr>
+                <td>Description</td>
+                <td>${product.description}</td>
+            </tr>    
                                                                                                                
         </table>         
 

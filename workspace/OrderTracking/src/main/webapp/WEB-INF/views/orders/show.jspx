@@ -10,7 +10,7 @@
     
     <spring:url value="/customers" var="editCustomerUrl"/>    
 
-    <h1>Customer Information: ${customer.firstName} ${customer.lastName}</h1>
+    <h1>Order Information: ${order.customer.firstName} - ${order.product.name}</h1>
 
     <div id="orderInfo">
 
@@ -29,13 +29,34 @@
                 <td>Product</td>
                 <td>${order.product.name}</td>
             </tr>  
+            <tr>
+                <td>Product Description</td>
+                <td>${order.product.description}</td>
+            </tr> 
+            <tr>
+                <td>Cost</td>
+                <td>${order.product.cost}</td>
+            </tr>  
+            <tr>
+                <td>Contact Number</td>
+                <td>${order.customer.mobPhone}</td>
+            </tr>  
+            <tr>
+                <td>Delivery Address</td>
+                <td>${order.customer.address}</td>
+            </tr>  
+            <tr>
+                <td>Special Delivery Instructions</td>
+                <td>${order.customer.specialInstructions}</td>
+            </tr>  
+            
                                                                                                         
         </table>         
         
       
-        <a href="${editCustomerUrl}/${customer.id}?form">Edit customer</a>     
+        <a href="${editOrderUrl}/${order.id}?form">Edit order</a>     
         <p/>
-        <a href="delete/${customer.id}"> DELETE </a>
+        <a href="delete/${order.id}" class="button">Delete</a>
                       
     </div>
 

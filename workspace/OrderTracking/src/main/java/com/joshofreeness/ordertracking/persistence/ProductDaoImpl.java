@@ -37,7 +37,6 @@ public class ProductDaoImpl implements ProductDao{
 		
 	}
 
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public Product findById(Long id) {

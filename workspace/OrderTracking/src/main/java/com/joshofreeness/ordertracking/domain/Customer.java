@@ -21,7 +21,7 @@ public class Customer implements Serializable{
 	private String firstName;
 	private String lastName;
 	private String address;
-	private int mobPhone;
+	private String mobPhone;
 	private String email;
 	private String specialInstructions;
 	private double credit;
@@ -63,11 +63,11 @@ public class Customer implements Serializable{
 		this.address = address;
 	}
 	@Column(name = "MOBPHONE")
-	public int getMobPhone() {
+	public String getMobPhone() {
 		return mobPhone;
 	}
 
-	public void setMobPhone(int mobPhone) {
+	public void setMobPhone(String mobPhone) {
 		this.mobPhone = mobPhone;
 	}
 	@Column(name = "EMAIL")

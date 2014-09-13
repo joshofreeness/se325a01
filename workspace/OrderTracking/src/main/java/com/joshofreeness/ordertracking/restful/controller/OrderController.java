@@ -109,6 +109,14 @@ public class OrderController {
 		return order;
 	}
 	
+	//Delete Order
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	public String deleteProductById(@PathVariable Long id, Model uiModel){
+		Order order = orderDao.findById(id);
+		orderDao.delete(order);
+		return "redirect:/orders/";
+	}
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	@ResponseBody
 	public void update(@RequestBody Order order, @PathVariable Long id) {

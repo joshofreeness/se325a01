@@ -35,6 +35,15 @@
         </div>
         <p/>     
         
+        <form:label path="description">
+            Description
+        </form:label>
+        <form:textarea cols="60" rows="6" path="description" id="productDescription"/>
+        <div>
+            <form:errors path="description" cssClass="error" />
+        </div>        
+        <p/> 
+        
         <button type="submit">
             <span>Save</span>
         </button> 

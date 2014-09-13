@@ -38,7 +38,7 @@ public class Order implements Serializable{
 		return id + " -- " + customer.toString() + " : " + product.toString(); 
 	}
 	
-	@OneToOne(orphanRemoval=true, cascade=CascadeType.ALL)
+	@OneToOne(orphanRemoval=false)
 	@JoinColumn(name = "CUSTOMER_ID")
 	public Customer getCustomer() {
 		return customer;
@@ -48,7 +48,7 @@ public class Order implements Serializable{
 		this.customer = customer;
 	}
 	
-	@OneToOne(orphanRemoval=true, cascade=CascadeType.ALL)
+	@OneToOne(orphanRemoval=false)
 	@JoinColumn(name = "PRODUCT_ID")
 	public Product getProduct() {
 		return product;

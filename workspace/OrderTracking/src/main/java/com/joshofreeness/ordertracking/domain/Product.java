@@ -22,7 +22,7 @@ public class Product implements Serializable{
 	private Long id;
 	private float cost;
 	private String name;
-	// TODO: Possibly add description
+	private String description;
 	private final Logger log = Logger.getLogger(Product.class);
 	
 	public Product(){}
@@ -64,5 +64,13 @@ public class Product implements Serializable{
 	
 	public void setId(Long id) {
 		this.id = id;
+	}
+	@Column(name = "DESCRIPTION")
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
