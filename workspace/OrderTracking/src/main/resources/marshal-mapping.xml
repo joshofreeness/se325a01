@@ -81,5 +81,19 @@
     
     </class> 
     
+    <class name="com.joshofreeness.ordertracking.restful.controller.IdParserForNewOrder" identity="id">
+    	<map-to xml="IdParserForNewOrder"/>
+		<field name="id" type="long">
+            <bind-xml name="id" node="element"/>
+        </field>  
+    	<field name="product" type="int">
+            <bind-xml name="product" node="element"/>
+        </field>
+        
+        <field name="customer" type="int">
+            <bind-xml name="customer" node="element"/>
+        </field>
+        
+    	</class>
    
 </mapping>

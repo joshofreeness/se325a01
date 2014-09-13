@@ -12,7 +12,7 @@
     <h1>${formTitle}</h1>
 
     <div id="orderUpdate">
-    <form:form modelAttribute="order" id="orderUpdateForm" method="post">
+    <!-- <form:form modelAttribute="order" id="orderUpdateForm" method="post">
 
         
 		<form:select path="product">
@@ -30,7 +30,38 @@
             <span>Reset</span>
         </button>       
                       
-    </form:form>   
+    </form:form>    -->
+    
+   <form:form modelAttribute="id_object" id="orderUpdateForm" method="post">
+
+        
+		<form:label path="customer">
+            Customer Id
+        </form:label>
+        <form:input path="customer" />
+        <div>
+            <form:errors path="customer" cssClass="error" />
+        </div>
+        <p/>
+        <form:label path="product">
+            Product Id
+        </form:label>
+        <form:input path="product" />
+        <div>
+            <form:errors path="product" cssClass="error" />
+        </div>
+        <p/>
+		<form:errors path="${error}" />
+        
+        
+        <button type="submit">
+            <span>Save</span>
+        </button> 
+        <button type="reset">
+            <span>Reset</span>
+        </button>       
+                      
+    </form:form>  
     </div>
 
 </div>

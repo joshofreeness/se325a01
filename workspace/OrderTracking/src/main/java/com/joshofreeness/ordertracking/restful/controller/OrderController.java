@@ -57,28 +57,36 @@ public class OrderController {
 	public String createForm(Model uiModel) {
 		List<Product> products = productDao.findAll();
 		List<Customer> customers = customerDao.findAll();
+		Integer[] list_ids = new Integer[2];
 		Order order = new Order();
+		IdParserForNewOrder id_object = new IdParserForNewOrder();
 		uiModel.addAttribute("order", order);
 		uiModel.addAttribute("products", products);
 		uiModel.addAttribute("customers", customers);
+		uiModel.addAttribute("id_object",id_object);
 		return "orders/create";
 	}
 	
 	//Post a new product form to create new customer
 	@RequestMapping(params = "form", method = RequestMethod.POST)
-	public String createFromForm(Order order, BindingResult bindingResult, Model uiModel) {
+	public String createFromForm(IdParserForNewOrder ids, BindingResult bindingResult, Model uiModel) {
 
 		if(bindingResult.hasErrors()) {
 			
-			uiModel.addAttribute("error", bindingResult.getAllErrors());
-			uiModel.addAttribute("order", order);
-			List<Product> products = productDao.findAll();
-			List<Customer> customers = customerDao.findAll();
-			uiModel.addAttribute("products", products);
-			uiModel.addAttribute("customers", customers);
+//			uiModel.addAttribute("error", bindingResult.getAllErrors());
+//			uiModel.addAttribute("order", order);
+//			List<Product> products = productDao.findAll();
+//			List<Customer> customers = customerDao.findAll();
+//			Integer[] list_ids = new Integer[2];
+//			uiModel.addAttribute("products", products);
+//			uiModel.addAttribute("customers", customers);
+//			uiModel.addAttribute("list_ids", list_ids);
 			return "orders/create";
 		}
 		log.info("Save order");
+		Order order = new Order();
+		order.setCustomer(customerDao.findById(new Long(ids.getCustomer())));
+		order.setProduct(productDao.findById(new Long(ids.getProduct())));
 		orderDao.save(order);
 		log.info("Saved order");
 		return "redirect:/orders/" + order.getId();
