@@ -6,7 +6,9 @@
       <jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
       <jsp:directive.page contentType="text/html;charset=UTF-8" />  
       <jsp:directive.page pageEncoding="UTF-8" /> 
-
+	
+	<spring:url value="resources" var="resourcesUrl" /> 
+	<spring:url value="http://code.jquery.com/jquery-latest.min.js" var="jQueyUrl" /> 
       
       <head>
 		<title>Online Ordering</title>
@@ -14,9 +16,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=8" />
 		<spring:url value="/resources/style.css" var="css_url" />
         <link rel="stylesheet" type="text/css" media="screen" href="${css_url}" />
+        
+        
 		<title>Order System App</title>
 	</head>
-      <body class="tundra spring">
+      <body>
       	<div id="headerWrapper">
       		<tiles:insertAttribute name="header" ignore="true" />
       	</div>
@@ -28,5 +32,7 @@
 				<tiles:insertAttribute name="footer" ignore="true"/>
 			</div>
 		</div>
+		
       </body>
+      
 </html>

@@ -33,10 +33,6 @@ body,div,td {
     max-width: 950px;
     margin-right: auto;
     margin-left: auto;
-
-    /* fix max-width incompatibility in IE6 */
-    width:expression(document.body.clientWidth > 950? "950px": "auto" );
-    
     overflow:hidden;
     display:block;
 }
@@ -47,10 +43,6 @@ body,div,td {
 	max-width: 950px;
 	margin-right: auto;
 	margin-left: auto;
-
-	/* fix max-width incompatibility in IE6 */
-	width:expression(document.body.clientWidth > 950? "950px": "auto" );
-	
 	overflow:hidden;
 	display:block;
 }
@@ -149,7 +141,6 @@ div .box {
 	margin-left:105px;
 }
 
-/* menu elements*/
 
 a.menu, a.menu:link, a.menu:visited {display:block; width:150px; height:25px;} 
 

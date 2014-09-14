@@ -12,7 +12,7 @@
 
     <h1>Customer Information: ${customer.firstName} ${customer.lastName}</h1>
 
-    <div id="contactInfo">
+    <div id="customerInfo">
 
 
 

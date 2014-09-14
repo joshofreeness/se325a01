@@ -10,7 +10,7 @@
     
     <spring:url value="/products" var="editProductUrl"/>    
 
-    <h1>Customer Information: ${product.name}</h1>
+    <h1>Product Information: ${product.name}</h1>
 
     <div id="productInfo">
 
@@ -31,7 +31,7 @@
             </tr>    
                                                                                                                
         </table>         
-
+		<p/>
        
         <a href="${editProductUrl}/${product.id}?form">Edit product</a> 
         <p/>    
