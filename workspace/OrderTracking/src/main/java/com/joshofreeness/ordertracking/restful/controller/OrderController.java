@@ -69,7 +69,7 @@ public class OrderController {
 		return "orders/create";
 	}
 	
-	//Post a new product form to create new customer
+	//Post a new product form to create new order
 	@RequestMapping(params = "form", method = RequestMethod.POST)
 	public String createFromForm(IdParserForNewOrder ids, BindingResult bindingResult, Model uiModel) {
 
@@ -124,6 +124,7 @@ public class OrderController {
 		IdParserForNewOrder order_info = new IdParserForNewOrder();
 		order_info.setCustomer((int)(long)order.getCustomer().getId());
 		order_info.setProduct((int)(long)order.getProduct().getId());
+		order_info.setId(order.getId());
 		List<Customer> customers = customerDao.findAll();
 		List<Product> products = productDao.findAll();
 		uiModel.addAttribute("customers", customers);
@@ -132,6 +133,25 @@ public class OrderController {
 		
 		
 		return "orders/update";
+	}
+	
+	//Post an edited order
+	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
+	public String update(IdParserForNewOrder order_info, BindingResult bindingResult, Model uiModel) {
+		if(bindingResult.hasErrors()) {
+			uiModel.addAttribute("order_info", order_info);
+
+			return "orders/update";
+		}
+		
+		Order order = orderDao.findById(order_info.getId());
+		order.setCustomer(customerDao.findById(new Long(order_info.getCustomer())));
+		order.setProduct(productDao.findById(new Long(order_info.getProduct())));
+		order.setId(order_info.getId());
+		orderDao.save(order);
+
+		// Redirect the browser to a page that displays the updated Contact.
+		return "redirect:/orders/" + order.getId();
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
