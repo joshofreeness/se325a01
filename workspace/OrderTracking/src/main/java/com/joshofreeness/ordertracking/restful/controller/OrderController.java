@@ -117,6 +117,23 @@ public class OrderController {
 		return "redirect:/orders/";
 	}
 	
+	//Request an edit order form
+	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+	public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+		Order order = orderDao.findById(id);
+		IdParserForNewOrder order_info = new IdParserForNewOrder();
+		order_info.setCustomer((int)(long)order.getCustomer().getId());
+		order_info.setProduct((int)(long)order.getProduct().getId());
+		List<Customer> customers = customerDao.findAll();
+		List<Product> products = productDao.findAll();
+		uiModel.addAttribute("customers", customers);
+		uiModel.addAttribute("products", products);
+		uiModel.addAttribute("id_object", order_info);
+		
+		
+		return "orders/update";
+	}
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	@ResponseBody
 	public void update(@RequestBody Order order, @PathVariable Long id) {

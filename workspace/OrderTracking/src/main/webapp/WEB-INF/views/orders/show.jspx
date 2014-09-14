@@ -53,7 +53,7 @@
         </table>         
         
       
-        <a href="/orders/${order.id}?form">Edit order</a>     
+        <a href="/ordertracking/orders/${order.id}?form">Edit order</a>     
         <p/>
         <a href="delete/${order.id}" class="button">Delete</a>
                       
