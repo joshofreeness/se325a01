@@ -2,10 +2,12 @@ package com.joshofreeness.ordertracking.persistence;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
+import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,8 @@ public class CustomerDaoImpl implements CustomerDao{
 	public void setSessionFactory(SessionFactory s){
 		sessionFactory = s;
 	}
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly=true)
