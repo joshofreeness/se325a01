@@ -13,7 +13,7 @@
 	<spring:url value="/orders" var="ordersUrl"/>
 	<spring:url value="/products" var="productsUrl"/>
 
-    <h3>Menu</h3>
+    <h2>Menu</h2>
     <a href="${productsUrl}"><h3>Products</h3></a>
     <a href="${ordersUrl}"><h3>Orders</h3></a>
     <a href="${customersUrl}"><h3>Customers</h3></a>
