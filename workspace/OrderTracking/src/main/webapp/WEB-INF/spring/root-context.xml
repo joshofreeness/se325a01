@@ -41,14 +41,7 @@
     </bean>
 
 
-	<!-- <bean id="loggingAdvice" class="com.joshofreeness.ordertracking.persistence.CustomLogger"/>
 	
-	<aop:config>
-		<aop:pointcut id="loggingPointcut" expression="execution(* *(..))"/>
-		<aop:aspect ref="loggingAdvice">
-			<aop:before pointcut-ref="loggingPointcut" method="loggingAdvice"/>
-		</aop:aspect>
-	</aop:config> -->
     
     
 		
