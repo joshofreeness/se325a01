@@ -15,10 +15,9 @@ public class CustomLogger implements MethodInterceptor{
 	@Override
 	public Object invoke(MethodInvocation method) throws Throwable {
 		Object target = method.getThis().getClass();
-		
-		log.info(String.format("test BEFORE %s", target.toString()));
+		log.info(String.format("About to execute method in %s", target.toString()));
 		Object result = method.proceed();
-		log.info("testAFTER");
+		log.info("Method complete");
 		return result;
 	}
 
